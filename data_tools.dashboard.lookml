@@ -4,7 +4,7 @@
   elements:
   - title: Cohort Table
     name: Cohort Table
-    model: thelook
+    model: powered_by
     explore: cohorts
     type: table
     fields:
@@ -76,7 +76,7 @@
     height: 6
   - title: Cohort Chart
     name: Cohort Chart
-    model: thelook
+    model: powered_by
     explore: cohorts
     type: looker_line
     fields:
@@ -148,7 +148,7 @@
     height: 7
   - title: Cohort Size
     name: Cohort Size
-    model: thelook
+    model: powered_by
     explore: cohorts
     type: table
     fields:
@@ -218,7 +218,7 @@
     title: Cohort
     type: field_filter
     default_value: User Signup Month
-    model: thelook
+    model: powered_by
     explore: cohorts
     field: cohort_size.cohort_filter
     listens_to_filters: []
@@ -228,7 +228,7 @@
     title: Metric
     type: field_filter
     default_value: User Retention
-    model: thelook
+    model: powered_by
     explore: cohorts
     field: cohort_size.metric_filter
     listens_to_filters: []
@@ -251,7 +251,7 @@
   elements:
   - title: Web Traffic
     name: Web Traffic
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: looker_line
     fields:
@@ -336,7 +336,7 @@
     height: 8
   - title: Users Today
     name: Users Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -396,7 +396,7 @@
     height: 4
   - title: Visitors Today
     name: Visitors Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -458,7 +458,7 @@
     height: 4
   - title: Sessions Today
     name: Sessions Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -518,7 +518,7 @@
     height: 4
   - title: Bounce Rate Today
     name: Bounce Rate Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -578,7 +578,7 @@
     height: 4
   - title: Conversion Rate Today
     name: Conversion Rate Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -639,7 +639,7 @@
     height: 4
   - title: Orders Today
     name: Orders Today
-    model: thelook
+    model: powered_by
     explore: data_tool
     type: single_value
     fields:
@@ -703,7 +703,7 @@
     title: Timeframe
     type: field_filter
     default_value: Week
-    model: thelook
+    model: powered_by
     explore: data_tool
     field: data_tool.timeframe_filter
     listens_to_filters: []
@@ -713,7 +713,7 @@
     title: Primary Metric
     type: field_filter
     default_value: Users
-    model: thelook
+    model: powered_by
     explore: data_tool
     field: data_tool.primary_metric_filter
     listens_to_filters: []
@@ -723,7 +723,7 @@
     title: Second Metric
     type: field_filter
     default_value: Conversion Rate
-    model: thelook
+    model: powered_by
     explore: data_tool
     field: data_tool.second_metric_filter
     listens_to_filters: []

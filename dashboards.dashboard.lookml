@@ -6,7 +6,7 @@
   elements:
   - name: Number of First Purchasers
     title: Number of First Purchasers
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -59,7 +59,7 @@
     height: 4
   - name: Average Order Sale Price
     title: Average Order Sale Price
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -115,7 +115,7 @@
     height: 4
   - name: Orders by Day and Category
     title: Orders by Day and Category
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_area
     fields:
@@ -188,7 +188,7 @@
     height: 9
   - name: Website Visit Volume vs Conversion Rate
     title: Website Visit Volume vs. Conversion Rate
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_column
     fields:
@@ -290,7 +290,7 @@
     height: 9
   - name: Percent of Cohort Still Active by Traffic Source
     title: Percent of Cohort Still Active by Traffic Source
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_line
     fields:
@@ -365,7 +365,7 @@
     height: 8
   - name: Total Spend by Cohort
     title: Total Spend by Cohort
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_line
     fields:
@@ -441,7 +441,7 @@
     height: 7
   - name: Total Sales, Year over Year
     title: Total Sales, Year over Year
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_line
     fields:
@@ -505,7 +505,7 @@
     height: 9
   - name: Highest Spending Users
     title: Highest Spending Users
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_map
     fields:
@@ -610,7 +610,7 @@
     height: 9
   - name: User Behaviors by Traffic Source
     title: User Behaviors by Traffic Source
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_column
     fields:
@@ -683,7 +683,7 @@
     height: 7
   - name: User Basic Demographic Profile
     title: User Basic Demographic Profile
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_donut_multiples
     fields:
@@ -743,7 +743,7 @@
     height: 8
   - name: Most Viewed Brands Online
     title: Most Viewed Brands Online
-    model: thelook
+    model: powered_by
     explore: sessions
     type: table
     fields:
@@ -811,7 +811,7 @@
     height: 9
   - name: 30 Day Repeat Purchase Rate
     title: 30 Day Repeat Purchase Rate
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -859,7 +859,7 @@
     height: 4
   - name: Total Order Count
     title: Total Order Count
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -937,7 +937,7 @@
     title: State
     type: field_filter
     default_value: ''
-    model: thelook
+    model: powered_by
     explore: order_items
     field: users.state
     listens_to_filters:
@@ -948,7 +948,7 @@
     title: City
     type: field_filter
     default_value: ''
-    model: thelook
+    model: powered_by
     explore: order_items
     field: users.city
     listens_to_filters:
@@ -966,7 +966,7 @@
     title: Country
     type: field_filter
 #     default_value: "USA"
-    model: thelook
+    model: powered_by
     explore: order_items
     field: users.country
     listens_to_filters: []
@@ -985,7 +985,7 @@
   elements:
   - name: Total Orders
     title: Total Orders
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1005,7 +1005,7 @@
     height: 3
   - name: Total Customers
     title: Total Customers
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1028,7 +1028,7 @@
     height: 3
   - name: Average Order Value
     title: Average Order Value
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1049,7 +1049,7 @@
     height: 3
   - name: Brand Traffic by Source, OS
     title: Brand Traffic by Source, OS
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_donut_multiples
     fields:
@@ -1102,7 +1102,7 @@
     height: 8
   - name: Top Product Categories - Cart vs Conversion
     title: Top Product Categories - Cart vs Conversion
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_column
     fields:
@@ -1139,7 +1139,7 @@
     x_axis_scale: auto
     series_types:
       sessions.cart_to_checkout_conversion: line
-      __FILE: thelook_event/web_analytics.dashboard.lookml
+      __FILE: powered_by_event/web_analytics.dashboard.lookml
       __LINE_NUM: 632
       sessions.overall_conversion: line
     label_density: 25
@@ -1202,7 +1202,7 @@
     height: 8
   - name: Top Visitors and Transaction History
     title: Top Visitors and Transaction History
-    model: thelook
+    model: powered_by
     explore: events
     type: table
     fields:
@@ -1238,7 +1238,7 @@
     height: 10
   - name: Sales and Sale Price Trend
     title: Sales and Sale Price Trend
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_line
     fields:
@@ -1295,7 +1295,7 @@
     height: 10
   - name: Sales by Department and Category
     title: Sales by Department and Category
-    model: thelook
+    model: powered_by
     explore: order_items
     type: table
     fields:
@@ -1331,7 +1331,7 @@
     height: 10
   - name: Top Purchasers of Brand
     title: Top Purchasers of Brand
-    model: thelook
+    model: powered_by
     explore: order_items
     type: table
     fields:
@@ -1365,7 +1365,7 @@
     height: 8
   - name: Website Sessions by Hour of Day and User Lifetime Order Tier
     title: Website Sessions by Hour of Day and User Lifetime Order Tier
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_column
     fields:
@@ -1434,7 +1434,7 @@
     height: 8
   - name: Brand Share of Wallet over Customer Lifetime
     title: Brand Share of Wallet over Customer Lifetime
-    model: thelook
+    model: powered_by
     explore: orders_with_share_of_wallet_application
     type: table
     fields:
@@ -1508,7 +1508,7 @@
     height: 8
   - name: Most Correlated Brands
     title: Most Correlated Brands
-    model: thelook
+    model: powered_by
     explore: affinity
     type: looker_line
     fields:
@@ -1567,7 +1567,7 @@
     height: 10
   - name: Purchasers of This Brand Also Bought (Brand Affinity)
     title: Purchasers of This Brand Also Bought (Brand Affinity)
-    model: thelook
+    model: powered_by
     explore: affinity
     type: table
     fields:
@@ -1624,7 +1624,7 @@
     title: Brand Name
     type: field_filter
     default_value: Calvin Klein
-    model: thelook
+    model: powered_by
     explore: order_items
     field: products.brand
     listens_to_filters: []
@@ -1648,7 +1648,7 @@
   elements:
   - name: User Info
     title: User Info
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_single_record
     fields:
@@ -1681,7 +1681,7 @@
     height: 6
   - name: Lifetime Orders
     title: Lifetime Orders
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1701,7 +1701,7 @@
     height: 4
   - name: Total Items Returned
     title: Total Items Returned
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1722,7 +1722,7 @@
     height: 4
   - name: Lifetime Spend
     title: Lifetime Spend
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1763,7 +1763,7 @@
     height: 4
   - name: Items Order History
     title: Items Order History
-    model: thelook
+    model: powered_by
     explore: order_items
     type: table
     fields:
@@ -1790,7 +1790,7 @@
     height: 6
   - name: Favorite Categories
     title: Favorite Categories
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_pie
     fields:
@@ -1823,7 +1823,7 @@
     height: 10
   - name: User Avatar
     title: User Avatar
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1844,7 +1844,7 @@
     height: 6
   - name: User Location
     title: User Location
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_geo_coordinates
     fields:
@@ -1892,7 +1892,7 @@
     title: Email
     type: field_filter
     default_value: jgraham@gmail.com
-    model: thelook
+    model: powered_by
     explore: order_items
     field: users.email
     listens_to_filters: []
@@ -1910,7 +1910,7 @@
   elements:
   - name: Total Visitors
     title: Total Visitors
-    model: thelook
+    model: powered_by
     explore: events
     type: single_value
     fields:
@@ -1962,7 +1962,7 @@
     height: 3
   - name: Total Converted Visitors
     title: Total Converted Visitors
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -1981,7 +1981,7 @@
     height: 3
   - name: Total Profit
     title: Total Profit
-    model: thelook
+    model: powered_by
     explore: order_items
     type: single_value
     fields:
@@ -2020,7 +2020,7 @@
     height: 3
   - name: Visits by Browser
     title: Visits by Browser
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_pie
     fields:
@@ -2053,7 +2053,7 @@
     height: 8
   - name: How Long do Visitors Spend on Website?
     title: How Long do Visitors Spend on Website?
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_bar
     fields:
@@ -2096,7 +2096,7 @@
     height: 7
   - name: Bounce Rate by Page
     title: Bounce Rate by Page
-    model: thelook
+    model: powered_by
     explore: sessions
     type: looker_column
     fields:
@@ -2126,14 +2126,14 @@
     - right
     series_types:
       events.bounce_rate: line
-      __FILE: thelook_event/web_analytics.dashboard.lookml
+      __FILE: powered_by_event/web_analytics.dashboard.lookml
       __LINE_NUM: 340
     y_axis_combined: false
     label_density: 10
     series_labels:
       events.bounce_rate: Bounce Rate by Page
       events.count: Number of Page Views
-      __FILE: thelook_event/web_analytics.dashboard.lookml
+      __FILE: powered_by_event/web_analytics.dashboard.lookml
       __LINE_NUM: 347
     legend_position: center
     colors:
@@ -2155,7 +2155,7 @@
     height: 8
   - name: Most Popular Brands
     title: Most Popular Brands
-    model: thelook
+    model: powered_by
     explore: events
     type: table
     fields:
@@ -2187,7 +2187,7 @@
     y_axis_combined: true
     series_labels:
       events.count: Total Pageviews
-      __FILE: thelook_event/web_analytics.dashboard.lookml
+      __FILE: powered_by_event/web_analytics.dashboard.lookml
       __LINE_NUM: 540
     y_axis_labels:
     - Total Pageviews
@@ -2213,7 +2213,7 @@
     height: 8
   - name: eCommerce Funnel
     title: eCommerce Funnel
-    model: thelook
+    model: powered_by
     explore: sessions
     type: looker_column
     fields:
@@ -2294,7 +2294,7 @@
     height: 7
   - name: Global Events
     title: Global Events
-    model: thelook
+    model: powered_by
     explore: events
     type: looker_map
     fields:
@@ -2357,7 +2357,7 @@
     height: 8
   - name: Daily Session and User Count
     title: Daily Session and User Count
-    model: thelook
+    model: powered_by
     explore: sessions
     type: looker_line
     fields:
@@ -2421,7 +2421,7 @@
     height: 7
   - name: Percent Purchasing Sessions
     title: Percent Purchasing Sessions
-    model: thelook
+    model: powered_by
     explore: sessions
     type: looker_pie
     fields:
@@ -2485,7 +2485,7 @@
     title: Browser
     type: field_filter
     default_value: ''
-    model: thelook
+    model: powered_by
     explore: events
     field: events.browser
     listens_to_filters: []
@@ -2495,7 +2495,7 @@
     title: Traffic Source
     type: field_filter
     default_value:
-    model: thelook
+    model: powered_by
     explore: events
     field: users.traffic_source
     listens_to_filters: []
@@ -2520,7 +2520,7 @@
   elements:
   - name: Order Shipment Status
     title: Order Shipment Status
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_column
     fields:
@@ -2573,7 +2573,7 @@
     height: 7
   - name: Open Orders >3 Days Old - Immediate Action Required
     title: Open Orders >3 Days Old - Immediate Action Required
-    model: thelook
+    model: powered_by
     explore: order_items
     type: table
     fields:
@@ -2606,7 +2606,7 @@
     height: 7
   - name: Open Orders - Where do we need to ship?
     title: Open Orders - Where do we need to ship?
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_map
     fields:
@@ -2646,7 +2646,7 @@
     height: 8
   - name: Average Shipping Time to Users
     title: Average Shipping Time to Users
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_map
     fields:
@@ -2686,7 +2686,7 @@
     height: 8
   - name: Most Common Shipping Locations
     title: Most Common Shipping Locations
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_map
     fields:
@@ -2729,7 +2729,7 @@
     height: 8
   - name: Inventory Aging Report
     title: Inventory Aging Report
-    model: thelook
+    model: powered_by
     explore: order_items
     type: looker_column
     fields:
@@ -2781,7 +2781,7 @@
     title: Distribution Center
     type: field_filter
     default_value: Chicago IL
-    model: thelook
+    model: powered_by
     explore: order_items
     field: distribution_centers.name
     listens_to_filters: []
