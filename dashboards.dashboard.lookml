@@ -2787,3 +2787,620 @@
     listens_to_filters: []
     allow_multiple_values: true
     required: false
+
+- dashboard: supplier_overview
+  title: Supplier Overview
+  layout: newspaper
+  embed_style:
+    background_color: fafaf7
+    show_title: false
+    title_color: "#C26B42"
+    show_filters_bar: false
+    tile_text_color: "#6f7a87"
+    text_tile_text_color: ''
+  elements:
+  - title: Total Orders
+    name: Total Orders
+    model: powered_by
+    explore: order_items
+    type: single_value
+    fields: [order_items.order_count, order_items.reporting_period]
+    filters:
+      order_items.reporting_period: "-NULL"
+    sorts: [order_items.order_count desc]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{table_calculation: percent_change, label: Percent Change, expression: "(${order_items.order_count}\
+          \ - offset(${order_items.order_count},1))/ offset(${order_items.order_count},1)",
+        value_format: !!null '', value_format_name: percent_0}]
+    query_timezone: America/Los_Angeles
+    font_size: medium
+    colors: ["#1f78b4", "#a6cee3", "#33a02c", "#b2df8a", "#e31a1c", "#fb9a99", "#ff7f00",
+      "#fdbf6f", "#6a3d9a", "#cab2d6", "#b15928", "#edbc0e"]
+    text_color: "#434A52"
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: true
+    comparison_type: change
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    single_value_title: Orders This Year
+    hidden_fields: [order_items.reporting_period]
+    comparison_label: vs Same Period Last Year
+    y_axes: []
+    listen:
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 0
+    col: 18
+    width: 6
+    height: 4
+  - title: Average Order Profit
+    name: Average Order Profit
+    model: powered_by
+    explore: order_items
+    type: single_value
+    fields: [order_items.average_gross_margin]
+    filters: {}
+    sorts: [order_items.order_count desc]
+    limit: 500
+    query_timezone: America/Los_Angeles
+    font_size: medium
+    colors: ["#1f78b4", "#a6cee3", "#33a02c", "#b2df8a", "#e31a1c", "#fb9a99", "#ff7f00",
+      "#fdbf6f", "#6a3d9a", "#cab2d6", "#b15928", "#edbc0e"]
+    color_palette: Default
+    text_color: "#434A52"
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 0
+    col: 12
+    width: 6
+    height: 4
+  - title: Number of First Purchasers
+    name: Number of First Purchasers
+    model: powered_by
+    explore: order_items
+    type: single_value
+    fields: [order_items.first_purchase_count]
+    filters: {}
+    sorts: [order_items.order_count desc]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{table_calculation: goal, label: Goal, expression: '10000', value_format: !!null '',
+        value_format_name: !!null ''}]
+    query_timezone: America/Los_Angeles
+    font_size: medium
+    colors: ["#1f78b4", "#a6cee3", "#33a02c", "#b2df8a", "#e31a1c", "#fb9a99", "#ff7f00",
+      "#fdbf6f", "#6a3d9a", "#cab2d6", "#b15928", "#edbc0e"]
+    text_color: "#434A52"
+    custom_color_enabled: false
+    custom_color: forestgreen
+    show_single_value_title: true
+    show_comparison: true
+    comparison_type: progress_percentage
+    comparison_reverse_colors: false
+    show_comparison_label: true
+    single_value_title: New Users Acquired
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 0
+    col: 0
+    width: 6
+    height: 4
+  - title: Highest Spending Users
+    name: Highest Spending Users
+    model: powered_by
+    explore: order_items
+    type: looker_map
+    fields: [users.approx_location, order_items.order_count, users.count, order_items.total_sale_price,
+      order_items.average_spend_per_user]
+    filters:
+      users.country: '"USA"'
+    sorts: [order_items.order_count desc]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    map_plot_mode: points
+    heatmap_gridlines: true
+    map_tile_provider: positron
+    map_position: fit_data
+    map_scale_indicator: 'off'
+    map_pannable: true
+    map_zoomable: true
+    map_marker_type: circle
+    map_marker_icon_name: default
+    map_marker_radius_mode: proportional_value
+    map_marker_units: pixels
+    map_marker_proportional_scale_type: linear
+    map_marker_color_mode: value
+    show_view_names: false
+    show_legend: false
+    quantize_map_value_colors: false
+    colors: ["#1f78b4", "#a6cee3", "#33a02c", "#b2df8a", "#e31a1c", "#fb9a99", "#ff7f00",
+      "#fdbf6f", "#6a3d9a", "#cab2d6", "#b15928", "#edbc0e"]
+    color_palette: Default
+    hidden_fields: [order_items.order_count, users.count, order_items.total_sale_price]
+    map_latitude: 36.66841891894786
+    map_longitude: -122.431640625
+    map_zoom: 3
+    map_marker_radius_max: 20
+    map_value_colors: ["#E4ECF3", "#416E9A"]
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 4
+    col: 14
+    width: 10
+    height: 8
+  - title: 30 Day Repeat Purchase Rate
+    name: 30 Day Repeat Purchase Rate
+    model: powered_by
+    explore: order_items
+    type: single_value
+    fields: [order_items.30_day_repeat_purchase_rate]
+    filters: {}
+    sorts: [order_items.order_count desc]
+    limit: 500
+    query_timezone: America/Los_Angeles
+    color_palette: Default
+    font_size: medium
+    colors: ["#1f78b4", "#a6cee3", "#33a02c", "#b2df8a", "#e31a1c", "#fb9a99", "#ff7f00",
+      "#fdbf6f", "#6a3d9a", "#cab2d6", "#b15928", "#edbc0e"]
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    ordering: none
+    show_null_labels: false
+    text_color: "#434A52"
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 0
+    col: 6
+    width: 6
+    height: 4
+  - title: Total Sales, Year over Year
+    name: Total Sales, Year over Year
+    model: powered_by
+    explore: order_items
+    type: looker_line
+    fields: [order_items.created_month_num, order_items.created_year, order_items.total_sale_price]
+    pivots: [order_items.created_year]
+    filters:
+      order_items.created_year: before 0 months ago
+      order_items.delivered_date: after 2012/01/01
+      order_items.order_id: ">2"
+    sorts: [order_items.created_year desc, order_items.created_month_num]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: right
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    colors: ["#434A52", "#858E93", "#416E9A", "#C26B42", "#1BD4BC"]
+    point_style: circle_outline
+    interpolation: monotone
+    ordering: none
+    show_null_labels: false
+    show_null_points: false
+    x_axis_label: Month of Year
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 4
+    col: 0
+    width: 14
+    height: 8
+  - title: User Basic Demographic Profile
+    name: User Basic Demographic Profile
+    model: powered_by
+    explore: order_items
+    type: looker_donut_multiples
+    fields: [users.traffic_source, users.gender, order_items.count]
+    pivots: [users.traffic_source]
+    filters: {}
+    sorts: [order_items.order_count desc, users.traffic_source]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    show_value_labels: true
+    show_view_names: true
+    color_palette: Default
+    font_size: 12
+    stacking: ''
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    ordering: none
+    show_null_labels: false
+    colors: ["#858E93", "#416E9A", "#BED1E2", "#C26B42", "#1BD4BC"]
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 12
+    col: 0
+    width: 10
+    height: 8
+  - title: Percent of Cohort Still Active by Traffic Source
+    name: Percent of Cohort Still Active by Traffic Source
+    model: powered_by
+    explore: order_items
+    type: looker_line
+    fields: [order_items.months_since_signup, users.traffic_source, users.count]
+    pivots: [users.traffic_source]
+    filters:
+      order_items.months_since_signup: "[0, 12]"
+      users.created_month: 12 months
+    sorts: [users.traffic_source, order_items.months_since_signup]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{table_calculation: pct_cohort_still_active, label: Pct Cohort
+          Still Active, expression: '100.0 * ${users.count} / max(${users.count})',
+        value_format: "#.#\\%", value_format_name: !!null ''}]
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    colors: ["#9EA5A9", "#416E9A", "#BED1E2", "#C26B42", "#1BD4BC"]
+    color_palette: Custom
+    hidden_fields: [users.count]
+    point_style: none
+    interpolation: linear
+    ordering: none
+    show_null_labels: false
+    y_axis_max: ['40']
+    y_axes: []
+    listen:
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 12
+    col: 10
+    width: 14
+    height: 8
+  - title: User Behavior by Traffic Source
+    name: User Behavior by Traffic Source
+    model: powered_by
+    explore: order_items
+    type: looker_column
+    fields: [users.traffic_source, order_items.average_sale_price, user_order_facts.average_lifetime_orders]
+    filters:
+      users.traffic_source: "-NULL"
+    sorts: [users.traffic_source]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: true
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axis_combined: false
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    ordering: none
+    show_null_labels: false
+    colors: ["#416E9A", "#BED1E2"]
+    color_palette: Custom
+    font_size: '13'
+    y_axis_labels: [Average Sale Price ($)]
+    y_axis_orientation: [left, right]
+    y_axis_value_format: '0'
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 20
+    col: 0
+    width: 10
+    height: 8
+  - title: Total Spend by Cohort
+    name: Total Spend by Cohort
+    model: powered_by
+    explore: order_items
+    type: looker_line
+    fields: [order_items.months_since_signup, users.created_month, order_items.total_sale_price]
+    pivots: [users.created_month]
+    filters:
+      order_items.created_month: 12 months ago for 12 months
+      users.created_month: 12 months
+    sorts: [users.traffic_source, order_items.months_since_signup, users.created_month
+        desc]
+    limit: 500
+    column_limit: 50
+    dynamic_fields: [{table_calculation: total_sale_price, label: Total Sale Price,
+        expression: "if(\nis_null(${order_items.total_sale_price})\n,null\n,running_total(${order_items.total_sale_price}))",
+        value_format: "$#,###", value_format_name: !!null ''}]
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: true
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    colors: ["#434A52", "#C26B42", "#1BD4BC", "#858E93", "#9EA5A9", "#416E9A", "#5D83A9",
+      "#BED1E2"]
+    color_palette: Custom
+    point_style: none
+    interpolation: linear
+    ordering: none
+    show_null_labels: false
+    hidden_fields: [order_items.total_sale_price]
+    y_axis_value_format: "$#,##0"
+    show_null_points: false
+    y_axes: []
+    listen:
+      Region: users.state_region
+      Gender: users.gender
+      Category: products.category_type
+    row: 20
+    col: 10
+    width: 14
+    height: 8
+  - title: Orders by Day and Category
+    name: Orders by Day and Category
+    model: powered_by
+    explore: order_items
+    type: looker_area
+    fields: [order_items.created_date, products.category, order_items.count]
+    pivots: [products.category]
+    filters:
+      products.category: '"Blazers & Jackets","Sweaters","Pants","Shorts","Fashion
+        Hoodies & Sweatshirts","Accessories"'
+    sorts: [products.category, order_items.created_date]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    stacking: normal
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: true
+    show_view_names: true
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    colors: ["#1BD4BC", "#C26B42", "#BED1E2", "#5D83A9", "#416E9A", "#9EA5A9"]
+    color_palette: Custom
+    point_style: none
+    interpolation: linear
+    ordering: none
+    show_null_labels: false
+    x_axis_datetime_tick_count: 4
+    y_axis_labels: ["# Order Items"]
+    hidden_fields: []
+    y_axes: []
+    listen:
+      Date: order_items.created_date
+      Region: users.state_region
+      Gender: users.gender
+    row: 36
+    col: 0
+    width: 24
+    height: 8
+  - title: Website Visit Volume vs Conversion Rate
+    name: Website Visit Volume vs Conversion Rate
+    model: powered_by
+    explore: events
+    type: looker_column
+    fields: [events.event_day_of_week, events.sessions_count, events.unique_visitors,
+      sessions.overall_conversion]
+    fill_fields: [events.event_day_of_week]
+    sorts: [events.event_day_of_week]
+    limit: 500
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    stacking: ''
+    show_value_labels: false
+    label_density: 25
+    legend_position: center
+    x_axis_gridlines: false
+    y_axis_gridlines: false
+    show_view_names: false
+    limit_displayed_rows: false
+    y_axis_combined: true
+    show_y_axis_labels: true
+    show_y_axis_ticks: true
+    y_axis_tick_density: default
+    y_axis_tick_density_custom: 5
+    show_x_axis_label: false
+    show_x_axis_ticks: true
+    x_axis_scale: auto
+    y_axis_scale_mode: linear
+    ordering: none
+    show_null_labels: false
+    show_totals_labels: false
+    show_silhouette: false
+    totals_color: "#808080"
+    show_null_points: true
+    point_style: circle_outline
+    interpolation: linear
+    series_types:
+      events.sessions_count: line
+      events.unique_visitors: line
+    y_axes: [{label: '', maxValue: !!null '', minValue: !!null '', orientation: left,
+        showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
+        type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: events.sessions_count,
+            name: Sessions Count}, {id: events.unique_visitors, name: Unique Visitors}]},
+      {label: !!null '', maxValue: !!null '', minValue: !!null '', orientation: right,
+        showLabels: true, showValues: true, tickDensity: default, tickDensityCustom: 5,
+        type: linear, unpinAxis: false, valueFormat: !!null '', series: [{id: sessions.overall_conversion,
+            name: Overall Conversion}]}]
+    series_labels:
+      events.sessions_count: Total Visitors
+    colors: ["#1EA8DF", "#8ED3EF", "#B1A8C4", "#635189"]
+    series_colors: {}
+    label_color: ["#EA8A2F", "#e9b404"]
+    trend_lines: []
+    column_spacing_ratio:
+    column_group_spacing_ratio:
+    hidden_fields: []
+    listen:
+      Date: events.event_date
+      Region: users.state_region
+      Gender: users.gender
+      Category: product_viewed.category_type
+    row: 28
+    col: 0
+    width: 12
+    height: 8
+  - title: Most Viewed Categories Online
+    name: Most Viewed Categories Online
+    model: powered_by
+    explore: sessions
+    type: table
+    fields: [events.sessions_count, sessions.cart_to_checkout_conversion, product_viewed.category]
+    sorts: [events.sessions_count desc]
+    limit: 15
+    column_limit: 50
+    query_timezone: America/Los_Angeles
+    show_view_names: true
+    show_row_numbers: true
+    truncate_column_names: false
+    hide_totals: false
+    hide_row_totals: false
+    table_theme: gray
+    limit_displayed_rows: false
+    enable_conditional_formatting: false
+    conditional_formatting_ignored_fields: []
+    conditional_formatting_include_totals: false
+    conditional_formatting_include_nulls: false
+    hidden_fields: []
+    y_axes: []
+    row: 28
+    col: 12
+    width: 12
+    height: 8
+  filters:
+  - name: Date
+    title: Date
+    type: date_filter
+    default_value: 90 days
+    allow_multiple_values: true
+    required: false
+  - name: Region
+    title: Region
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: powered_by
+    explore: order_items
+    listens_to_filters: []
+    field: users.state_region
+  - name: Gender
+    title: Gender
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: powered_by
+    explore: order_items
+    listens_to_filters: []
+    field: users.gender
+  - name: Category
+    title: Category
+    type: field_filter
+    default_value: ''
+    allow_multiple_values: true
+    required: false
+    model: powered_by
+    explore: order_items
+    listens_to_filters: []
+    field: products.category_type

@@ -104,6 +104,41 @@ view: users {
     drill_fields: [zip, city]
   }
 
+  dimension: state_region {
+    full_suggestions: yes
+    sql: ${TABLE}.state ;;
+
+    case: {
+      when: {
+        sql: ${state} in ('Connecticut', 'Maine', 'Massachusetts', 'New Hampshire',
+          'Rhode Island', 'Vermont', 'New Jersey', 'New York', 'Pennsylvania', 'Delaware');;
+        label: "Northeast"
+      }
+      when: {
+        sql: ${state} in ('Illinois', 'Indiana', 'Michigan', 'Ohio', 'Wisconsin'
+          , 'Iowa', 'Kansas', 'Minnesota', 'Missouri', 'Nebraska', 'North Dakota', 'South Dakota');;
+        label: "Midwest"
+      }
+      when: {
+        sql: ${state} in ('Florida', 'Georgia', 'Maryland', 'North Carolina', 'South Carolina', 'Virginia'
+                  , 'District of Columbia', 'West Virginia'
+                  , 'Alabama', 'Kentucky', 'Mississippi', 'Tennessee'
+                  , 'Arkansas', 'Louisiana', 'Oklahoma', 'Texas');;
+        label: "South"
+      }
+      when: {
+        sql: ${state} in ('Arizona', 'Colorado', 'Idaho', 'Montana', 'Nevada', 'New Mexico', 'Utah', 'Wyoming');;
+        label: "Mountain"
+      }
+      when: {
+        sql: ${state} in ('Alaska', 'California', 'Hawaii', 'Oregon', 'Washington');;
+        label: "Pacific"
+      }
+      else: "Not In US"
+    }
+    alpha_sort: yes
+  }
+
   dimension: zip {
     type: zipcode
     sql: ${TABLE}.zip ;;
