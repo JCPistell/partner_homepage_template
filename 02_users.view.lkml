@@ -20,7 +20,7 @@ view: users {
   }
 
   dimension: name {
-    sql: ${first_name} || ' tacocatburrito ' || ${last_name} ;;
+    sql: ${first_name} || ' burritosonly ' || ${last_name} ;;
   }
 
   dimension: age {
