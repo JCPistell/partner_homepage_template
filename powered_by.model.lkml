@@ -18,6 +18,10 @@ persist_with: ecommerce_etl
 explore: order_items {
   label: "(1) Orders, Items and Users"
   view_name: order_items
+  access_filter: {
+    field: products.brand
+    user_attribute: allowed_brands
+  }
 
   join: order_facts {
     view_label: "Orders"
