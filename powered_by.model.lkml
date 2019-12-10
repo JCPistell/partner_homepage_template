@@ -69,7 +69,7 @@ explore: order_items {
 
 explore: events {
   label: "(2) Web Event Data"
-  hidden: no
+  hidden: yes
 
   join: sessions {
     sql_on: ${events.session_id} =  ${sessions.session_id} ;;
