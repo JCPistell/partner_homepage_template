@@ -1,5 +1,5 @@
 connection: "snowlooker"
-label: "1) eCommerce with Event Data"
+label: "Hub Model"
 
 
 include: "*.view" # include all the views
@@ -15,7 +15,7 @@ persist_with: ecommerce_etl
 
 
 explore: order_items {
-  label: "(1) Orders, Items and Users"
+  label: "Orders, Items and Users"
   view_name: order_items
   access_filter: {
     field: products.brand
@@ -69,6 +69,7 @@ explore: order_items {
 
 explore: events {
   label: "(2) Web Event Data"
+  hidden: yes
 
   join: sessions {
     sql_on: ${events.session_id} =  ${sessions.session_id} ;;
@@ -109,6 +110,7 @@ explore: events {
 
 explore: sessions {
   label: "(3) Web Session Data"
+  hidden: yes
 
   join: events {
     sql_on: ${sessions.session_id} = ${events.session_id} ;;
@@ -152,6 +154,7 @@ explore: sessions {
 
 explore: affinity {
   label: "(4) Affinity Analysis"
+  hidden: yes
 
   always_filter: {
     filters: {
@@ -177,6 +180,7 @@ explore: affinity {
 
 explore: orders_with_share_of_wallet_application {
   label: "(5) Share of Wallet Analysis"
+  hidden:  yes
   extends: [order_items]
   view_name: order_items
 
@@ -187,6 +191,7 @@ explore: orders_with_share_of_wallet_application {
 
 explore: journey_mapping {
   label: "(6) Customer Journey Mapping"
+  hidden: yes
   extends: [order_items]
   view_name: order_items
 
@@ -218,6 +223,7 @@ explore: journey_mapping {
 
 explore: inventory_items{
   label: "(7) Stock Analysis"
+  hidden:  yes
   fields: [ALL_FIELDS*,-order_items.median_sale_price]
 
   join: order_facts {
@@ -264,6 +270,7 @@ explore: inventory_items{
 
 explore: inventory_snapshot {
   label: "(8) Historical Stock Snapshot Analysis"
+  hidden: yes
   join: trailing_sales_snapshot {
     sql_on: ${inventory_snapshot.product_id}=${trailing_sales_snapshot.product_id}
     AND ${inventory_snapshot.snapshot_date}=${trailing_sales_snapshot.snapshot_date};;
