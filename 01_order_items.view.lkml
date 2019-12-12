@@ -468,6 +468,8 @@ view: order_items {
       # hidden: yes
     }
 
+
+
 ########## Sets ##########
 
   set: detail {
@@ -475,5 +477,20 @@ view: order_items {
   }
   set: return_detail {
       fields: [id, order_id, status, created_date, returned_date, sale_price, products.brand, products.item_name, users.portrait, users.name, users.email]
+  }
+}
+
+test: order_item_id_is_unique {
+  explore_source: order_items {
+    column: id {}
+    column: count {}
+    sort: {
+      field: count
+      desc: yes
+    }
+    limit:  1
+  }
+  assert: id_is_unique {
+    expression: ${order_items.count} = 1;;
   }
 }
