@@ -1,4 +1,4 @@
-<h1 style="padding-bottom:0px;color:#76678b;font-weight:500">Welcome to Super Updated Looker on K8s!</h1>
+<h1 style="padding-bottom:0px;color:#76678b;font-weight:500">Welcome to Super Updated Looker!</h1>
 <p style="font-weight: 300">
 Your environment of Looker comes pre-loaded with a sample database connection, data model, and demo dashboards. You can also connect Looker to your own database to build out your own testing and demo environments.
 </p>
