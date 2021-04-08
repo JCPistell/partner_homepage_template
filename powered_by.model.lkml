@@ -3,6 +3,7 @@ label: "Hub Model"
 
 
 include: "*.view" # include all the views
+include: "*.dashboard"
 
 datagroup: ecommerce_etl {
   ### Datagroups Allow you to sync cache and Persisted Derived Tables to events like ETL
